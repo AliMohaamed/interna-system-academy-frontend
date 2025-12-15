@@ -1,35 +1,42 @@
-import { useState } from 'react'
-import reactLogo from './assets/react.svg'
-import viteLogo from '/vite.svg'
-import './App.css'
+import { Routes, Route, Navigate } from "react-router-dom";
+import { LoginForm } from "@/features/auth/components/login-form";
+import { ProtectedRoute } from "@/components/common/protected-route";
+import { PublicRoute } from "@/components/common/public-route";
+
+// Placeholder for the Layout you will bring from v0
+// import { DashboardLayout } from "@/components/layouts/dashboard-layout"; 
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
-    <>
-      <div>
-        <a href="https://vite.dev" target="_blank">
-          <img src={viteLogo} className="logo" alt="Vite logo" />
-        </a>
-        <a href="https://react.dev" target="_blank">
-          <img src={reactLogo} className="logo react" alt="React logo" />
-        </a>
-      </div>
-      <h1>Vite + React</h1>
-      <div className="card">
-        <button onClick={() => setCount((count) => count + 1)}>
-          count is {count}
-        </button>
-        <p>
-          Edit <code>src/App.tsx</code> and save to test HMR
-        </p>
-      </div>
-      <p className="read-the-docs">
-        Click on the Vite and React logos to learn more
-      </p>
-    </>
-  )
+    <Routes>
+      {/* Public Routes (Login) */}
+      <Route element={<PublicRoute />}>
+        <Route path="/login" element={<LoginForm />} />
+      </Route>
+
+      {/* Protected Routes (Dashboard) */}
+      <Route element={<ProtectedRoute />}>
+        {/* We will wrap this with DashboardLayout later */}
+        {/* <Route element={<DashboardLayout />}> */}
+          
+          <Route path="/" element={<Navigate to="/dashboard" replace />} />
+          
+          {/* Dashboard Home */}
+          <Route path="/dashboard" element={<div>Dashboard Home (Stats)</div>} />
+          
+          {/* Features Placeholders */}
+          <Route path="/leads" element={<div>Leads Module</div>} />
+          <Route path="/students" element={<div>Students Module</div>} />
+          <Route path="/tutors" element={<div>Tutors Module</div>} />
+          <Route path="/settings" element={<div>Settings Module</div>} />
+
+        {/* </Route> */}
+      </Route>
+
+      {/* Catch All (404) */}
+      <Route path="*" element={<div>404 - Page Not Found</div>} />
+    </Routes>
+  );
 }
 
-export default App
+export default App;
