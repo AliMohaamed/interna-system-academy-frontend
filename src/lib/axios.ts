@@ -3,7 +3,8 @@ import { useAuthStore } from "@/features/auth/stores/useAuthStore";
 
 // Create Instance
 const apiClient = axios.create({
-  baseURL: import.meta.env.VITE_API_URL, // e.g., http://localhost:5000/api/v1
+  // Use VITE_ prefix for env variables in Vite
+  baseURL: import.meta.env.VITE_API_URL, 
   headers: {
     "Content-Type": "application/json",
   },
@@ -35,22 +36,28 @@ apiClient.interceptors.response.use(
       originalRequest._retry = true; // Mark as retried to prevent infinite loops
 
       try {
-        // 1. Call Refresh Token Endpoint (Cookie is sent automatically due to withCredentials: true)
+        // 1. Call Refresh Token Endpoint
         const { data } = await axios.post(
           `${import.meta.env.VITE_API_URL}/auth/refresh-token`,
           {},
-          { withCredentials: true } // Must be explicit here too
+          { withCredentials: true }
         );
 
         // 2. Update Store with new Access Token
-        useAuthStore.getState().login({
-          user: useAuthStore.getState().user!, // Keep existing user data
-          accessToken: data.data.accessToken,
-        });
+        // FIX: Use setAuth instead of login, and pass arguments correctly
+        const currentUser = useAuthStore.getState().user;
+        
+        if (currentUser) {
+            useAuthStore.getState().setAuth(
+                currentUser,            // Argument 1: User
+                data.data.accessToken   // Argument 2: Token
+            );
+        }
 
         // 3. Update the header for the original request and retry it
         originalRequest.headers.Authorization = `Bearer ${data.data.accessToken}`;
         return apiClient(originalRequest);
+        
       } catch (refreshError) {
         // If refresh fails (token expired completely), force logout
         useAuthStore.getState().logout();

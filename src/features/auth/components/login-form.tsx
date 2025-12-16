@@ -28,7 +28,7 @@ import {
   FormLabel,
   FormMessage,
 } from "@/components/ui/form";
-import { useToast } from "@/hooks/use-toast";
+import { useToast } from "@/hooks/use-toast"; 
 
 export function LoginForm() {
   const navigate = useNavigate();
@@ -97,7 +97,7 @@ export function LoginForm() {
       <Card className="w-full max-w-md shadow-lg">
         <CardHeader className="space-y-1">
           <CardTitle className="text-2xl font-bold text-center">
-            Codk System
+            Codk Academy System
           </CardTitle>
           <CardDescription className="text-center">
             Enter your email and password to access your account
