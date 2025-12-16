@@ -1,7 +1,7 @@
 import { Routes, Route, Navigate } from "react-router-dom";
-import { LoginForm } from "@/features/auth/components/login-form";
 import { ProtectedRoute } from "@/components/common/protected-route";
 import { PublicRoute } from "@/components/common/public-route";
+import LoginPage from "./features/auth/pages/LoginPage";
 
 // Placeholder for the Layout you will bring from v0
 // import { DashboardLayout } from "@/components/layouts/dashboard-layout"; 
@@ -11,7 +11,7 @@ function App() {
     <Routes>
       {/* Public Routes (Login) */}
       <Route element={<PublicRoute />}>
-        <Route path="/login" element={<LoginForm />} />
+        <Route path="/login" element={<LoginPage />} />
       </Route>
 
       {/* Protected Routes (Dashboard) */}

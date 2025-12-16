@@ -2,58 +2,118 @@
 @tailwind components;
 @tailwind utilities;
  
-@layer base {
-  :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
-    --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
-    --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 222.2 47.4% 11.2%;
-    --primary-foreground: 210 40% 98%;
-    --secondary: 210 40% 96.1%;
-    --secondary-foreground: 222.2 47.4% 11.2%;
-    --muted: 210 40% 96.1%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96.1%;
-    --accent-foreground: 222.2 47.4% 11.2%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 222.2 84% 4.9%;
-    --radius: 0.5rem;
-  }
- 
-  .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 210 40% 98%;
-    --primary-foreground: 222.2 47.4% 11.2%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 212.7 26.8% 83.9%;
-  }
+/* Codk Design System - Radical Simplicity */
+:root {
+  /* Primary: Teal (sparingly for actions only) */
+  --primary: oklch(0.696 0.17 162.48);
+  --primary-foreground: oklch(1 0 0);
+
+  /* Secondary: Deep Petroleum Blue */
+  --secondary: oklch(0.129 0.042 264.695);
+  --secondary-foreground: oklch(0.98 0 0);
+
+  /* Background: Pure white for main content */
+  --background: oklch(0.985 0.002 247.839);
+  --foreground: oklch(0.129 0.042 264.695);
+
+  /* Card & Surfaces */
+  --card: oklch(1 0 0);
+  --card-foreground: oklch(0.129 0.042 264.695);
+  --popover: oklch(1 0 0);
+  --popover-foreground: oklch(0.129 0.042 264.695);
+
+  /* Muted */
+  --muted: oklch(0.968 0.007 247.896);
+  --muted-foreground: oklch(0.554 0.046 257.417);
+
+  /* Accent */
+  --accent: oklch(0.968 0.007 247.896);
+  --accent-foreground: oklch(0.129 0.042 264.695);
+
+  /* Destructive */
+  --destructive: oklch(0.577 0.245 27.325);
+  --destructive-foreground: oklch(1 0 0);
+
+  /* UI Elements - crisp, subtle borders */
+  --border: oklch(0.929 0.013 255.508);
+  --input: oklch(0.968 0.007 247.896);
+  --ring: oklch(0.696 0.17 162.48);
+
+  /* Sidebar: Solid Deep Petroleum Blue - NO gradients */
+  --sidebar: oklch(0.129 0.042 264.695);
+  --sidebar-foreground: oklch(0.98 0 0);
+  --sidebar-primary: oklch(0.696 0.17 162.48);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.208 0.042 265.755);
+  --sidebar-accent-foreground: oklch(0.98 0 0);
+  --sidebar-border: oklch(0.208 0.042 265.755);
+  --sidebar-ring: oklch(0.696 0.17 162.48);
+
+  /* Charts */
+  --chart-1: oklch(0.696 0.17 162.48);
+  --chart-2: oklch(0.55 0.12 200);
+  --chart-3: oklch(0.45 0.08 220);
+  --chart-4: oklch(0.7 0.18 160);
+  --chart-5: oklch(0.6 0.14 190);
+
+  --radius: 0.5rem;
 }
- 
+
+.dark {
+  --primary: oklch(0.7 0.15 180);
+  --primary-foreground: oklch(0.15 0.04 250);
+  --secondary: oklch(0.25 0.04 250);
+  --secondary-foreground: oklch(0.98 0 0);
+  --background: oklch(0.12 0.02 250);
+  --foreground: oklch(0.98 0 0);
+  --card: oklch(0.18 0.03 250);
+  --card-foreground: oklch(0.98 0 0);
+  --popover: oklch(0.18 0.03 250);
+  --popover-foreground: oklch(0.98 0 0);
+  --muted: oklch(0.22 0.03 250);
+  --muted-foreground: oklch(0.7 0.01 250);
+  --accent: oklch(0.25 0.06 180);
+  --accent-foreground: oklch(0.85 0.12 180);
+  --destructive: oklch(0.5 0.2 27);
+  --destructive-foreground: oklch(1 0 0);
+  --border: oklch(0.28 0.03 250);
+  --input: oklch(0.25 0.03 250);
+  --ring: oklch(0.7 0.15 180);
+  --sidebar: oklch(0.1 0.03 250);
+  --sidebar-foreground: oklch(0.98 0 0);
+  --sidebar-primary: oklch(0.7 0.15 180);
+  --sidebar-primary-foreground: oklch(1 0 0);
+  --sidebar-accent: oklch(0.2 0.03 250);
+  --sidebar-accent-foreground: oklch(0.98 0 0);
+  --sidebar-border: oklch(0.25 0.03 250);
+  --sidebar-ring: oklch(0.7 0.15 180);
+  --chart-1: oklch(0.7 0.15 180);
+  --chart-2: oklch(0.6 0.12 200);
+  --chart-3: oklch(0.5 0.08 220);
+  --chart-4: oklch(0.75 0.18 160);
+  --chart-5: oklch(0.65 0.14 190);
+}
+
+
 @layer base {
   * {
     @apply border-border;
   }
   body {
     @apply bg-background text-foreground;
+  }
+}
+
+/* Remove gradient utilities, add flat button press effect */
+@layer utilities {
+  .btn-press {
+    @apply transition-transform active:scale-[0.98];
+  }
+  
+  /* أضف هذا التعريف */
+  .gradient-brand {
+    @apply bg-primary hover:bg-primary/90 text-primary-foreground;
+    /* أو إذا كنت تريد تدرج لوني حقيقي */
+    /* @apply bg-gradient-to-r from-teal-500 to-emerald-500; */
   }
 }
