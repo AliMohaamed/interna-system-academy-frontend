@@ -3,6 +3,7 @@ import { ProtectedRoute } from "@/components/common/protected-route";
 import { PublicRoute } from "@/components/common/public-route";
 import LoginPage from "./features/auth/pages/LoginPage";
 import { DashboardLayout } from "./components/layout/dashboard-layout";
+import DashboardPage from "./features/dashboard/pages/DashboardPage";
 
 // Placeholder for the Layout you will bring from v0
 // import { DashboardLayout } from "@/components/layouts/dashboard-layout"; 
@@ -20,7 +21,7 @@ function App() {
         {/* ✅ Wrap dashboard routes with the Layout */}
         <Route element={<DashboardLayout />}>
           <Route path="/" element={<Navigate to="/dashboard" replace />} />
-          <Route path="/dashboard" element={<div>Dashboard Home Stats Here</div>} />
+          <Route path="/dashboard" element={<DashboardPage />} />
           <Route path="/crm" element={<div>CRM Module</div>} />
           <Route path="/students" element={<div>Students List</div>} />
           {/* Add other routes here */}
